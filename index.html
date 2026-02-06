@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QuickLayout</title>
+  <link rel="stylesheet" href="/assets/app.css" />
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
+  <script src="/assets/app.js" defer></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="app-title">
+      <h1>QuickLayout</h1>
+      <p>HTML / CSS / JavaScript を「反映」ボタンで確認</p>
+    </div>
+    <div class="app-actions">
+      <button id="applyButton" class="primary">反映</button>
+      <button id="screenshotButton">スクショ</button>
+    </div>
+  </header>
+
+  <section class="storage-panel">
+    <div class="storage-input">
+      <label for="saveName">保存名</label>
+      <input id="saveName" type="text" placeholder="例: LP案" />
+    </div>
+    <div class="storage-actions">
+      <button id="saveButton">保存</button>
+      <button id="loadButton">読み込み</button>
+      <button id="deleteButton" class="ghost">削除</button>
+    </div>
+    <div class="storage-select">
+      <label for="saveSelect">保存一覧（最大10件）</label>
+      <select id="saveSelect">
+        <option value="">-- 選択してください --</option>
+      </select>
+    </div>
+  </section>
+
+  <main class="editor-preview">
+    <section class="editor-panel">
+      <div class="editor-block">
+        <h2>HTML</h2>
+        <textarea id="htmlEditor" spellcheck="false"></textarea>
+      </div>
+      <div class="editor-block">
+        <h2>CSS</h2>
+        <textarea id="cssEditor" spellcheck="false"></textarea>
+      </div>
+      <div class="editor-block">
+        <h2>JavaScript</h2>
+        <textarea id="jsEditor" spellcheck="false"></textarea>
+      </div>
+    </section>
+
+    <section class="preview-panel">
+      <div class="preview-tabs">
+        <button class="tab-button active" data-tab="pc">PC</button>
+        <button class="tab-button" data-tab="sp">スマホ</button>
+      </div>
+      <div class="preview-frame" data-view="pc">
+        <iframe id="previewFrame" title="QuickLayout Preview" sandbox="allow-scripts"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="captureRoot" class="capture-root" aria-hidden="true"></div>
+</body>
+</html>
